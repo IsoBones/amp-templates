@@ -79,9 +79,9 @@ App.ApplicationReadyMode=RegexMatch
 Console.FilterMatchRegex=
 Console.FilterMatchReplacement=
 Console.ThrowawayMessageRegex=^((WARNING|ERROR): Shader.+|Unknown command)$
-Console.AppReadyRegex=^\s*\d{1,2}:\d{2}:\d{2} Connected to Steam servers\s*$
-Console.UserJoinRegex=^\s*\d{1,2}:\d{2}:\d{2} Player (?<username>.+?) connected \(id=(?<userid>\d+)\)\.\s*$
-Console.UserLeaveRegex=^\s*\d{1,2}:\d{2}:\d{2} Player (?<username>.+?) disconnected\.\s*$
+Console.AppReadyRegex=^\s*(\d{1,2}:\d{2}:\d{2} )?Connected to Steam servers\s*$
+Console.UserJoinRegex=^\s*(\d{1,2}:\d{2}:\d{2} )?Player (?<username>.+?) connected \(id=(?<userid>\d+)\)\.\s*$
+Console.UserLeaveRegex=^\s*(\d{1,2}:\d{2}:\d{2} )?Player (?<username>.+?) disconnected\.\s*$
 Console.UserChatRegex=^$
 Console.UpdateAvailableRegex=
 Console.MetricsRegex=
