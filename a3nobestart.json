@@ -1,0 +1,60 @@
+[
+    {
+        "UpdateStageName": "Start RPT Console Watcher",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "cmd.exe",
+        "UpdateSourceArgs": "/C start powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"a3nobewatchrpt.ps1\" \"{{$FullBaseDir}}A3Master\" \"{{$FullBaseDir}}A3Master\\amp_console.log\" \"{{$FullBaseDir}}\"",
+        "RunInBackground": true,
+        "SkipOnFailure": true
+    },
+    {
+        "UpdateStageName": "Delete Active File",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "cmd.exe",
+        "UpdateSourceArgs": "/C del /Q /F \"{{$FullBaseDir}}battleye\\\"beserver*_active_*.cfg > NUL 2>&1",
+        "SkipOnFailure": true
+    },
+    {
+        "UpdateStageName": "Manage Bikeys",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -Command \"$subdirs = \\\"{{mod}};{{clientmod}}\\\" -split ';'; Set-Location arma3\\233780; Remove-Item '.\\keys\\*.bikey' -Exclude 'a3.bikey' -Force -ErrorAction SilentlyContinue; foreach ($subdir in $subdirs) { Get-ChildItem -Path \\\"$subdir\\*.bikey\\\" -File -ErrorAction SilentlyContinue | ForEach-Object { Copy-Item $_ -Destination '.\\keys' }; if (Test-Path \\\"$subdir\\keys\\\") { Copy-Item \\\"$subdir\\keys\\*.bikey\\\" -Destination '.\\keys' -Force -ErrorAction SilentlyContinue }; if (Test-Path \\\"$subdir\\key\\\") { Copy-Item \\\"$subdir\\key\\*.bikey\\\" -Destination '.\\keys' -Force -ErrorAction SilentlyContinue }; }\"",
+        "UpdateSourceConditionSetting": "ManageBikeys",
+        "UpdateSourceConditionValue": "true",
+        "SkipOnFailure": true
+    },
+    {
+        "UpdateStageName": "Headless Client Script Download",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://raw.githubusercontent.com/CubeCoders/AMPTemplates/main/arma3runhc.ps1",
+        "UpdateSourceArgs": "runhc.ps1",
+        "UpdateSourceTarget": "{{$FullInstanceDir}}",
+        "OverwriteExistingFiles": true,
+        "UpdateSourceConditionSetting": "ServerExecutable",
+        "UpdateSourceConditionValue": "_x64"
+    },
+    {
+        "UpdateStageName": "Headless Client Script Download",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://raw.githubusercontent.com/CubeCoders/AMPTemplates/main/arma3runhc32.ps1",
+        "UpdateSourceArgs": "runhc.ps1",
+        "UpdateSourceTarget": "{{$FullInstanceDir}}",
+        "OverwriteExistingFiles": true,
+        "UpdateSourceConditionSetting": "ServerExecutable",
+        "UpdateSourceConditionValue": ""
+    },
+    {
+        "UpdateStageName": "Start Headless Clients",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "cmd.exe",
+        "UpdateSourceArgs": "/C start powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"runhc.ps1\" {{HeadlessClientsNum}} {{$ApplicationIPBinding}} {{$GamePort}} \"{{password}}\" \"{{mod}}\" \"{{hc_parfile}}\" {{HeadlessClientsStartLimit}}",
+        "RunInBackground": true,
+        "SkipOnFailure": true
+    }
+]
