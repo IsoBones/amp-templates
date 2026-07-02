@@ -9,6 +9,14 @@
         "SkipOnFailure": true
     },
     {
+        "UpdateStageName": "Generate Mission List",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -ExecutionPolicy Bypass -File \"a3nobelistmissions.ps1\" \"{{$FullBaseDir}}mpmissions\" \"{{$FullBaseDir}}missions_available.txt\"",
+        "SkipOnFailure": true
+    },
+    {
         "UpdateStageName": "Delete Active File",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
