@@ -31,6 +31,54 @@
         }
     },
     {
+        "DisplayName": "Mission",
+        "Category": "Arma 3:stadia_controller",
+        "Subcategory": "Missions:map:3",
+        "Description": "Mission template name to load, which is the pbo filename in mpmissions WITHOUT the .pbo extension (e.g. testMission.VR). Copy a name from the Available Missions list below. Applied to server.cfg on server start.",
+        "Keywords": "mission,missions,pbo,mpmissions,template",
+        "FieldName": "mission",
+        "InputType": "text",
+        "IsFlagArgument": false,
+        "ParamFieldName": "mission",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "testMission.VR",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "Mission Difficulty",
+        "Category": "Arma 3:stadia_controller",
+        "Subcategory": "Missions:map:3",
+        "Description": "Difficulty applied to the loaded mission in the missions cycle.",
+        "Keywords": "mission,difficulty",
+        "FieldName": "missiondifficulty",
+        "InputType": "enum",
+        "IsFlagArgument": false,
+        "ParamFieldName": "missiondifficulty",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "Custom",
+        "EnumValues": {
+            "Recruit": "Recruit",
+            "Regular": "Regular",
+            "Veteran": "Veteran",
+            "Custom": "Custom"
+        }
+    },
+    {
+        "DisplayName": "Available Missions (auto-generated)",
+        "Category": "Arma 3:stadia_controller",
+        "Subcategory": "Missions:map:3",
+        "Description": "Auto-generated list of mission pbos found in the mpmissions folder. Refreshed on every server update and start. Copy a name from here into the Mission setting above. Edits to this list do nothing, it is regenerated automatically.",
+        "Keywords": "mission,missions,available,list",
+        "FieldName": "missionsavailable",
+        "InputType": "list",
+        "IsFlagArgument": false,
+        "ParamFieldName": "missionsavailable",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "",
+        "Special": "listfile:./arma3/233780/missions_available.txt",
+        "EnumValues": {}
+    },
+    {
         "DisplayName": "Server Password",
         "Category": "Arma 3:stadia_controller",
         "Subcategory": "Server:dns:1",
