@@ -1,4 +1,4 @@
-Meta.DisplayName=Arma 3 - No BattlEye (RPT Console)
+Meta.DisplayName=Arma 3 - NoBE
 Meta.Description=Arma 3 Dedicated Server with BattlEye toggle and read-only RPT console (no RCon). Windows only.
 Meta.OS=Windows
 Meta.Arch=x86_64
@@ -52,6 +52,7 @@ App.AdminPortRef=RCONPort
 App.PrimaryApplicationPortRef=GamePort
 App.UniversalSleepApplicationUDPPortRef=GamePort
 App.UniversalSleepSteamQueryPortRef=QueryPort
+App.UseSteamQueryForStatus=True
 App.MaxUsers=64
 App.UseRandomAdminPassword=True
 App.PersistRandomPassword=True
