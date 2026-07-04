@@ -1,4 +1,4 @@
-# a3nobewatchrpt.ps1  (v4 - optional filtering of 'Warning Message:' spam,
+# a3nobewatchrpt.ps1  (v4.1 - optional filtering of 'Warning Message:' and bone spam,
 # plus the v3 ready sentinel so AMP cannot miss "Connected to Steam servers")
 # Mirrors the newest MAIN SERVER Arma 3 RPT plus server_console.log into a
 # fixed-name file so AMP's TailLogFile console can display it.
@@ -79,6 +79,8 @@ function Write-Block($state, $outStream, [byte[]]$bytes, [int]$count) {
         if ($line.Length -eq 0) { continue }   # trailing empty from final newline
         $drop = $false
         if ($line -match 'Warning Message:') {
+            $drop = $true
+        } elseif ($line -match 'Error: Bone .* doesn.t exist in skeleton' -or $line -match 'Error: Bad bone name') {
             $drop = $true
         } elseif ($state.DroppedLast -and ($line -match 'Context:' -or $line -match 'Cannot evaluate')) {
             $drop = $true
