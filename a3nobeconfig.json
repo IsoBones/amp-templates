@@ -31,10 +31,10 @@
         }
     },
     {
-        "DisplayName": "Hide 'Warning Message:' spam in console",
+        "DisplayName": "Hide 'Warning Message:' and bone error spam in console",
         "Category": "Arma 3:stadia_controller",
         "Subcategory": "Server:dns:1",
-        "Description": "When enabled, the console watcher skips 'Warning Message:' lines (and their Context / Cannot evaluate follow-up lines) when mirroring the RPT into the AMP console. Cuts down massive startup log floods from mod config warnings and speeds up server Running detection. The actual RPT file on disk is untouched and always complete. Takes effect on next server start.",
+        "Description": "When enabled, the console watcher skips 'Warning Message:' lines (and their Context / Cannot evaluate follow-up lines) plus 'Error: Bone ... doesn't exist in skeleton' / 'Error: Bad bone name' lines when mirroring the RPT into the AMP console. Cuts down massive startup log floods from mod config warnings and speeds up server Running detection. The actual RPT file on disk is untouched and always complete. Takes effect on next server start.",
         "Keywords": "warning,spam,console,filter,rpt,flood",
         "FieldName": "hidewarnings",
         "InputType": "checkbox",
