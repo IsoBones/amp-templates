@@ -4,7 +4,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "cmd.exe",
-        "UpdateSourceArgs": "/C start powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"a3nobewatchrpt.ps1\" \"{{$FullBaseDir}}A3Master\" \"{{$FullBaseDir}}A3Master\\amp_console.log\" \"{{$FullBaseDir}}\"",
+        "UpdateSourceArgs": "/C start powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"a3nobewatchrpt.ps1\" \"{{$FullBaseDir}}A3Master\" \"{{$FullBaseDir}}A3Master\\amp_console.log\" \"{{$FullBaseDir}}\" \"{{hidewarnings}}\"",
         "RunInBackground": true,
         "SkipOnFailure": true
     },
