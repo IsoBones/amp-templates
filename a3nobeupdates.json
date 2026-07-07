@@ -229,5 +229,23 @@
         "UpdateSourceData": "cmd.exe",
         "UpdateSourceArgs": "/C if not exist \"{{$FullBaseDir}}A3Master\" mkdir \"{{$FullBaseDir}}A3Master\" & if not exist \"{{$FullBaseDir}}A3Master\\amp_console.log\" type NUL > \"{{$FullBaseDir}}A3Master\\amp_console.log\"",
         "SkipOnFailure": true
+    },
+    {
+        "UpdateStageName": "Mission List Script Download",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://raw.githubusercontent.com/IsoBones/amp-templates/main/a3nobelistmissions.ps1",
+        "UpdateSourceArgs": "a3nobelistmissions.ps1",
+        "UpdateSourceTarget": "{{$FullInstanceDir}}",
+        "OverwriteExistingFiles": true,
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Generate Mission List",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -ExecutionPolicy Bypass -File \"a3nobelistmissions.ps1\" \"{{$FullBaseDir}}mpmissions\" \"{{$FullBaseDir}}missions_available.txt\"",
+        "SkipOnFailure": true
     }
 ]
